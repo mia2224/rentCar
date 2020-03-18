@@ -129,6 +129,7 @@ li{
 h3, h5{
     font-family:'Montserrat';
     font-weight: bold;
+    text-align: center;
 }
 
 #lista{
@@ -137,8 +138,12 @@ h3, h5{
     font-size:20px;
 }
 
+.dn{
+    display:none !important;
+}
 
 /* button */
+
 
 .btn-primary{
     width: 280px;
@@ -167,7 +172,7 @@ h3, h5{
     box-shadow: unset;
 }
 
-.modifica, .remove, .prenota{
+#btns{
     border-color: #101010;
     border-radius: 5px;
     border: 1px solid;
@@ -175,7 +180,7 @@ h3, h5{
     font-size: 12px;
 }
 
-.modifica:hover, .remove:hover, .prenota:hover{
+#btns:hover{
     background: #55d6aa;
 }
 
@@ -230,3 +235,17 @@ form {
     overflow: hidden;
 }
 
+
+/*parco Auto */
+
+ul li.edit{
+    display:none;
+}
+
+ul li.edit .edit{
+     display:initial;
+}
+
+ul li.edit .noedit{
+    display:none;
+}

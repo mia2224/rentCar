@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 
 var $utente = $('#utente');
+var $id=$('#id');
 var $nome = $('#nome');
 var $cognome = $('#cognome');
 var $dataNascita = $('#dataNascita');
@@ -46,8 +47,48 @@ function addUtente(utente) {
        });
     });
 
-    /* delete utente */
+    
+    /* edit utente */
 
+    
+    $('.modifica').on('click', function(){
+        $('#editModal').modal('show');
+        var $li=$(this).closest('li');
+
+        console.log(data);
+        $('#id').val(data.id);
+        $('#nome').val(data.nome);
+        $('#cognome').val(data.cognome);
+        $('#annoNascita').val(data.annoNascita);
+       });
+ 
+       $('#editFormID').on('submit', function(){
+        e.preventDefault();
+        var id=$('#id').val();
+        $.ajax({
+            type:'PUT',
+            url:'http://localhost:3000/utente/'+id,
+            data: $('#editFormID').serialize(),
+            success: function(response){
+                console.log(response);
+                $('#editModal').modal('hide');
+                alert('Utente modificato');
+            },
+            error:function(error){
+                console.log(error);
+            }
+        });
+    });
+    
+
+
+
+
+
+
+
+    /* delete utente */
+    
     $utente.delegate('.remove', 'click', function(){
        var $li=$(this).closest('li');
         $.ajax({
@@ -60,66 +101,26 @@ function addUtente(utente) {
         });
     });
 
-   /* update utente */
 
-    $utente.delegate('.modifica', 'click', function(){
-        var $li=$(this).closest('li');
-        $li.find('input.nome').val($li.find('input.nome').html() );
-        $li.find('input.cognome').val($li.find('input.cognome').html() );
-        $li.find('input.dataNascita').val($li.find('input.dataNascita').html() );
-       
-    });       
-    $utente.delegate('#cancellaMod','click', function(){
-        $(this).closest('li').removeClass('modifica');
-    });       
-    $utente.delegate('#add-utente','click', function() {
-        var $li=$(this).closest('li');
-        var utente={
-            nome:$li.find('input.nome').val(),
-            cognome:$li.find('input.cognome').val(),
-            dataNascita:$li.find('input.dataNascita').val()
-        };
-      
-     $.ajax({
-         type:'PUT',
-         url:'http://localhost:3000/utente/' + $li.attr('data-id'),
-         data: {nome:nome, cognome:cognome, dataNascita:dataNascita},
-         success: function(newUtente) {
-             $li.find('input.nome').html(utente.nome);
-             $li.find('input.cognome').html(utente.cognome);
-             $li.find('input.dataNascita').html(utente.dataNascita);
-             $li.removeClass('modifica');
-         },
-         error:function (){
-             alert('errore modifica utente');
-         }
-     });
+
+ // cerca utenti
+
+$('#cercaUtenti').submit(function(){
+    $('result').html('');
+    var search=$('#cercaUtenti').val();
+    var expression= new RegExp(search, "i");
+    var apiURL='http://localhost:3000/utente';
+    $.getJSON(apiURL,function(data){
+        $.each(data, function(key,value){
+            if(utente.nome.search(expression)!=-1||utente.cognome.search(expression)!=-1)
+        {
+        $('#result').append('<li class="list-group"> '+' '+utente.nome+' '+utente.cognome+ '</li>');
+    }
     });
-
-// parco Auto
-
-//var $casaCostruttrice = $('#casaCostruttrice');
-//var $annoImmatricolazione = $('#annoImmatricolazione');
-//var $modello = $('#modello');
-//var $targa = $('#targa');
-//var $categoria = $('#categoria');
-//var utenteTemplate = $('#veicolo-template').html();
-//
-//function addVeicolo(veicolo) {
-//    $utente.append(Mustache.render(veicoloTemplate, utente));
-//}
-//
-//    /* get utente */
-//
-//    $.ajax({
-//    url: 'http://localhost:3000/veicolo',
-//    type: 'GET',
-//    }).then(function(veicolo) {
-//    $.each (veicolo, function(i, veicolo){
-//    addVeicolo(veicolo);
-//    });
-//   });
-
+  });
+});
+   
+    
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')

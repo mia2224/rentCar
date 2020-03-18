@@ -25,26 +25,68 @@
       </div>
       <br><br>
       <!--Navbar End-->
+      <div >
+        <h3> Veicoli </h3>
+        <br><br>
+ 
+        <button id="addAuto" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAuto">
+          Aggiungi auto
+        </button>
+        <br><br>
 
-      <h3> Veicoli</h3>
+                <!-- Modal ADD Auto -->
+                <div class="modal fade" id="modalAuto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuova auto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                       </button>
+                      </div>
+                      <div class="modal-body" id="lista">
+                        <p>Id <input class="" type="text" id="id"></p>
+                        <p>Tipo <input class="" type="text" id="casaCostruttrice"></p>
+                        <p>Modello <input class="" type="text" id="modello"></p>
+                        <p>Anno immatricolazione: <input class="" type="number" id="annoImmatricolazione"></p>
+                        <p>Targa <input class="" type="text" id="targa"></p>
+                        <p>Categoria <input class="" type="text" id="categoria"></p>
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" id="" data-dismiss="modal">Cancella</button>
+                       <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="">Salva</button>
+                     </div>
+                   </div>
+                 </div>
+                </div>
+                <!--Fine Modal-->   
+      <div>
       <ul id="veicolo"></ul>
-     
-     <template id="veicolo-template">
-      <li id="list" data-id="{{id}}"> 
-      {{casaCostruttrice}}
-      {{annoImmatricolazione}}
-      {{modello}}
-      {{targa}}
-      {{categoria}} <br>
+      <template id="veicolo-template">
+      <li class="autoList" id="lista" data-id="{{id}}">
+      <p>Id: {{id}}</p>
+      <p>Tipo: {{casaCostruttrice}}</p>
+      <p>Modello: {{modello}}</p>
+      <p>Anno immatricolazione: {{annoImmatricolazione}}</p>
+      <p>Targa: {{targa}}</p>
+      <p>Categoria: {{categoria}}</p>
+      
+      <button id="btns" class="prenota">Prenota</button>
+      <button id="btns" class="updateAuto"  data-toggle="modal" data-target="#modalAuto">Modifica</button>
+      <button id="btns" data-id="{{id}}" class="removeAuto">Elimina</button>
+
       </li>
-    </template>
+     </template>
+    </div>
+    </div>
+     
      
       <!--jQuery, Popper, Bootstrap-->
       
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script type="text/javascript" src="file.js"></script>
+      <script type="text/javascript" src="file1.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"></script>
       </body>
       </html>

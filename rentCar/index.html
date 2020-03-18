@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Rental Car</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="style.css">
-      <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <!--Navbar Start-->
-        <div class="header">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Car</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!--Navbar Start-->
+    <div class="header">
           <div class="inner-header">
             <div class="logo-container">
               <h1>RENTAL<span>CAR</span></h1>
             </div>
-           <ul class="navigation">
-             <a href="index.html"><li>Homepage</li></a>
-             <a href="parcoAuto.html"><li>Parco Auto</li></a>
-             <a href="profiloUtente.html"><li>Profilo Utente</li></a>
-           </ul>
-          </div>
+            <ul class="navigation">
+              <a href="index.html"><li>Homepage</li></a>
+              <a href="parcoAuto.html"><li>Parco Auto</li></a>
+              <a href="profiloUtente.html"><li>Profilo Utente</li></a>
+            </ul>
           </div>
         </div>
-        <br><br>
-        <!--Navbar End-->
-        <!-- Button trigger modal -->
-        <div class="main">
+      </div>
+      <br><br>
+      <!--Navbar End-->
+      <!-- Button trigger modal -->
+      <div class="main">
         
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-         Aggiungi utenti
+        <button id="btnAdd" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Aggiungi utenti
         </button>
-        <!-- Modal -->
+        <form>
+          <input type="search"  id="cercaUtenti" value="" placeholder=""/>
+          <input type="submit" id="cerca2" name="" value="Cerca"/> 
+          <ul class="list-group" id="result"></ul>  
+         </form>
+      
+        <!-- Modal ADD Utente -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Nuovo utente</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuovo utente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
                </button>
-             </div>
-             <div class="modal-body" id="lista">
-              <p>Nome <input class="nome" type="text" id="nome"></p>
-              <p>Cognome <input class="cognome" type="text" id="cognome"></p>
+              </div>
+              <div class="modal-body" id="lista">
+                <p>Nome <input class="nome" type="text" id="nome"></p>
+                <p>Cognome <input class="cognome" type="text" id="cognome"></p>
               <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
              </div>
              <div class="modal-footer">
@@ -54,26 +60,51 @@
          </div>
         </div>
         <!--Fine Modal-->           
-          
-          <form>
-          <input type="text" name="" id="cercaUtenti" value="" placeholder=""/>
-          <input type="submit" id="cerca2" name="" value="Cerca"/>    
-          </form>
-          
+
+        
+           <!-- Modal Edit Utente -->
+           <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modifica utente</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form id="editFormID">
+                <div class="modal-body" id="lista">
+                 <p>Nome <input class="nome" type="text" id="nome"></p>
+                 <p>Cognome <input class="cognome" type="text" id="cognome"></p>
+                 <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
+                </div>
+              
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" id="cancellaMod" data-dismiss="modal">Cancella</button>
+                  <button type="submit"  class="btn btn-secondary" data-dismiss="modal" id="mod-utente">Modifica</button>
+                  <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="add-utente">Salva</button>
+                </div>
+              </form>
+              </div>
+            </div>
+           </div>
+           <!--Fine Modal-->           
+                    
         </div>
         <br><br>
-        <h3> Lista utenti</h3>
         <ul id="utente"></ul>
        
-       <template id="utente-template">
-        <li id="lista" data-id="{{id}}"> 
-        <p class="nome">{{nome}}</p>
-        <p class="cognome">{{cognome}}</p> <br>
-        <button class="modifica" data-toggle="modal" data-target="#myModal">Modifica</button>
-        <button class="prenota">Profilo</button>
-        <button data-id="{{id}}" class="remove">Elimina</button>
+        <template id="utente-template">
+        <li data-id="{{id}}" id="lista"> 
+        {{nome}}
+        {{cognome}}
+        <p class="dn">{{dataNascita}} {{id}}</p>
+        <br>
+        <button type="submit" id="btns" class="modifica" data-toggle="modal" data-target="#editModal">Modifica</button>
+        <button id="btns" class="customer">Profilo</button>
+        <button id="btns" data-id="{{id}}" class="remove">Elimina</button>
         </li>
-      </template>
+        </template>
       
    
        </div>
