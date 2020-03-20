@@ -72,31 +72,76 @@ function addUtente(utente) {
     
     /* edit utente */
 
-    
+    var editSource= $("#editModal").html();
+    var editModal= Handlebars.compile(editSource)
+
     $('.modifica').on('click', function(){
-        $('#editModal').modal('show');
-        var $li=$(this).closest('li');
-        var $id=$(this).attr('id');
+        var listItem= $(event.target).closest("li.list-group-item");
+        listItem.find(".content").hide();
+        var content = listItem.find("p").html();
+
+        var editHtml = editModal({
+            value: content
         });
- 
-       $('#mod-utente').on('click', function(e){
-        e.preventDefault();
+
+        listItem.append(editHtml);
+        
+        var $editForm = listItem.find('#editFormID');
+
+        $editForm.on('click', function(event){
+            e.preventDefault();
+        });
+
+        var newContent= $editForm.find('input').val();
+        listItem.find('p').html(newContent);
+
+        listItem.find('.content').show();
+
+        $editForm.remove();
+
+        var id= listItem.attr('e')
+
         $.ajax({
-            type:'PUT',
-            url:'http://localhost:3000/utente/9',
-            contentType:'application/json',
-            data: $('#editFormID').serialize(),
-            success: function(data){
-                $('#id').val(data.id);
-                $('#nome').val(data.nome);
-                $('#cognome').val(data.cognome);
-                $('#annoNascita').val(data.annoNascita);
-            },
-            error:function(error){
-                console.log(error);
-            }
-        });
-        });
+               method:'PUT',
+               url:'http://localhost:3000/utente/'+id,
+               data:{
+                   text: newContent
+               }
+            });
+            });
+
+
+
+
+
+
+
+
+    
+   // $('.modifica').on('click', function(){
+   //     $('#editModal').modal('show');
+   //     var $li=$(this).closest('li');
+   //     var $id=$(this).attr('id');
+   //     });
+ //
+   //    $('#mod-utente').on('click', function(e){
+   //     e.preventDefault();
+   //     $.ajax({
+  // //         type:'PUT',
+   //         url:'http://localhost:3000/utente/9',
+   //         contentType:'application/json',
+   //         data: $('#editFormID').serialize(),
+   //         success: function(data){
+   //             $('#id').val(data.id);
+   //             $('#nome').val(data.nome);
+   //             $('#cognome').val(data.cognome);
+   //             $('#annoNascita').val(data.annoNascita);
+   //         },
+   //         error:function(error){
+   //             console.log(error);
+   //         }
+   //     });
+   //     });
     
 
 

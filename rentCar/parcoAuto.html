@@ -67,19 +67,18 @@
       <div>
       <ul id="veicolo"></ul>
       <template id="veicolo-template">
-      <li id="lista" data-id="{{id}}">
-      <a>
+      <li id="lista" data-id="{{id}}"><a>
       <p class="dn">Id: {{id}}</p>
       <p>Tipo: {{casaCostruttrice}}</p>
       <p>Modello: {{modello}}</p>
       <p>Anno immatricolazione: {{annoImmatricolazione}}</p>
       <p>Targa: {{targa}}</p>
       <p>Categoria: {{categoria}}</p>
-      </a>
+      
       <button id="btns" class="prenota">Prenota</button>
       <button id="btns" class="updateAuto"  data-toggle="modal" data-target="#modalAuto">Modifica</button>
       <button id="btns" data-id="{{id}}" class="removeAuto">Elimina</button>
-      </li>
+      </a></li>
      </template>
      </div>
      </div>
