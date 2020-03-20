@@ -28,11 +28,15 @@
       <div >
         <h3> Veicoli </h3>
         <br><br>
- 
         <button id="addAuto" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAuto">
           Aggiungi auto
         </button>
-        <br><br>
+
+         <form>
+          <input type="text"  id="cercaVeicoli" onkeyup="cercaAuto()" placeholder=""/>
+          <input type="submit" id="cerca2"  name="" value="Cerca"/> 
+         </form>
+         <br><br>
 
                 <!-- Modal ADD Auto -->
                 <div class="modal fade" id="modalAuto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,26 +63,26 @@
                    </div>
                  </div>
                 </div>
-                <!--Fine Modal-->   
+                <!--Fine ADD Modal-->   
       <div>
       <ul id="veicolo"></ul>
       <template id="veicolo-template">
-      <li class="autoList" id="lista" data-id="{{id}}">
-      <p>Id: {{id}}</p>
+      <li id="lista" data-id="{{id}}">
+      <a>
+      <p class="dn">Id: {{id}}</p>
       <p>Tipo: {{casaCostruttrice}}</p>
       <p>Modello: {{modello}}</p>
       <p>Anno immatricolazione: {{annoImmatricolazione}}</p>
       <p>Targa: {{targa}}</p>
       <p>Categoria: {{categoria}}</p>
-      
+      </a>
       <button id="btns" class="prenota">Prenota</button>
       <button id="btns" class="updateAuto"  data-toggle="modal" data-target="#modalAuto">Modifica</button>
       <button id="btns" data-id="{{id}}" class="removeAuto">Elimina</button>
-
       </li>
      </template>
-    </div>
-    </div>
+     </div>
+     </div>
      
      
       <!--jQuery, Popper, Bootstrap-->

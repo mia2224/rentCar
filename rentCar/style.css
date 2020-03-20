@@ -196,7 +196,7 @@ form {
     display: inline-block;
 }
 
-#cercaUtenti{
+#cercaUtenti, #cercaVeicoli{
     position: relative;
     bottom: -3px;
     display: inline-block;
@@ -238,14 +238,3 @@ form {
 
 /*parco Auto */
 
-ul li.edit{
-    display:none;
-}
-
-ul li.edit .edit{
-     display:initial;
-}
-
-ul li.edit .noedit{
-    display:none;
-}

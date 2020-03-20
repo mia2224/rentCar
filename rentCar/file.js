@@ -1,3 +1,25 @@
+
+    // cerca utenti
+     function cerca(){
+      var input, filter, ul, li, a, i, txtValue;
+      input=document.getElementById('cercaUtenti');
+      filter= input.value.toUpperCase();
+      ul=document.getElementById("utente");
+      li=ul.getElementsByTagName('li');
+ 
+      for (i = 0; i < li.length; i++) {       
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter)>-1) {
+      li[i].style.display = "";
+     } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+
+
 $(document).ready(function() {
 
 
@@ -21,8 +43,8 @@ function addUtente(utente) {
     }).then(function(utente) {
     $.each (utente, function(i, utente){
     addUtente(utente);
-  });
-});
+     });
+    });
 
 
     /*post utente*/
@@ -54,40 +76,31 @@ function addUtente(utente) {
     $('.modifica').on('click', function(){
         $('#editModal').modal('show');
         var $li=$(this).closest('li');
-
-        console.log(data);
-        $('#id').val(data.id);
-        $('#nome').val(data.nome);
-        $('#cognome').val(data.cognome);
-        $('#annoNascita').val(data.annoNascita);
-       });
+        var $id=$(this).attr('id');
+        });
  
-       $('#editFormID').on('submit', function(){
+       $('#mod-utente').on('click', function(e){
         e.preventDefault();
-        var id=$('#id').val();
         $.ajax({
             type:'PUT',
-            url:'http://localhost:3000/utente/'+id,
+            url:'http://localhost:3000/utente/9',
+            contentType:'application/json',
             data: $('#editFormID').serialize(),
-            success: function(response){
-                console.log(response);
-                $('#editModal').modal('hide');
-                alert('Utente modificato');
+            success: function(data){
+                $('#id').val(data.id);
+                $('#nome').val(data.nome);
+                $('#cognome').val(data.cognome);
+                $('#annoNascita').val(data.annoNascita);
             },
             error:function(error){
                 console.log(error);
             }
         });
-    });
+        });
     
 
 
-
-
-
-
-
-    /* delete utente */
+   /* delete utente */
     
     $utente.delegate('.remove', 'click', function(){
        var $li=$(this).closest('li');
@@ -102,27 +115,15 @@ function addUtente(utente) {
     });
 
 
-
- // cerca utenti
-
-$('#cercaUtenti').submit(function(){
-    $('result').html('');
-    var search=$('#cercaUtenti').val();
-    var expression= new RegExp(search, "i");
-    var apiURL='http://localhost:3000/utente';
-    $.getJSON(apiURL,function(data){
-        $.each(data, function(key,value){
-            if(utente.nome.search(expression)!=-1||utente.cognome.search(expression)!=-1)
-        {
-        $('#result').append('<li class="list-group"> '+' '+utente.nome+' '+utente.cognome+ '</li>');
-    }
-    });
-  });
-});
-   
-    
+ 
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
     })
+
 });
+
+   
+
+
+

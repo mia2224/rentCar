@@ -31,12 +31,14 @@
         <button id="btnAdd" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
           Aggiungi utenti
         </button>
+
         <form>
-          <input type="search"  id="cercaUtenti" value="" placeholder=""/>
-          <input type="submit" id="cerca2" name="" value="Cerca"/> 
+          <input type="text"  id="cercaUtenti" onkeyup="cerca()" placeholder=""/>
+          <input type="submit" id="cerca2"  name="" value="Cerca"/> 
           <ul class="list-group" id="result"></ul>  
-         </form>
-      
+        </form>
+
+
         <!-- Modal ADD Utente -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -50,7 +52,7 @@
               <div class="modal-body" id="lista">
                 <p>Nome <input class="nome" type="text" id="nome"></p>
                 <p>Cognome <input class="cognome" type="text" id="cognome"></p>
-              <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
+                <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
              </div>
              <div class="modal-footer">
                <button type="button" class="btn btn-secondary" id="cancellaMod" data-dismiss="modal">Cancella</button>
@@ -59,55 +61,52 @@
            </div>
          </div>
         </div>
-        <!--Fine Modal-->           
+        <!--Fine Add Modal-->           
 
         
-           <!-- Modal Edit Utente -->
-           <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modifica utente</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form id="editFormID">
-                <div class="modal-body" id="lista">
-                 <p>Nome <input class="nome" type="text" id="nome"></p>
-                 <p>Cognome <input class="cognome" type="text" id="cognome"></p>
-                 <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
-                </div>
-              
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" id="cancellaMod" data-dismiss="modal">Cancella</button>
-                  <button type="submit"  class="btn btn-secondary" data-dismiss="modal" id="mod-utente">Modifica</button>
-                  <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="add-utente">Salva</button>
-                </div>
-              </form>
-              </div>
-            </div>
+   <!-- Modal Edit Utente -->
+   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifica utente</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+             <form id="editFormID">
+             <div class="modal-body" id="lista">
+             <p>Nome <input class="nome" type="text" id="nome"></p>
+             <p>Cognome <input class="cognome" type="text" id="cognome"></p>
+             <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
+             </div>
+          
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cancellaMod" data-dismiss="modal">Cancella</button>
+            <button type="submit"  class="btn btn-secondary" data-dismiss="modal" id="mod-utente">Modifica</button>
+            <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="add-utente">Salva</button>
            </div>
-           <!--Fine Modal-->           
-                    
-        </div>
+         </form>
+         </div>
+       </div>
+      </div>
+    </div>
+   <!--Fine Modal-->           
+                      
         <br><br>
-        <ul id="utente"></ul>
-       
+        <ul id="utente">
         <template id="utente-template">
-        <li data-id="{{id}}" id="lista"> 
-        {{nome}}
-        {{cognome}}
+        <li data-id="{{id}}" id="lista"><a>
+        <p>{{nome}} {{cognome}}</p>
         <p class="dn">{{dataNascita}} {{id}}</p>
-        <br>
+        
         <button type="submit" id="btns" class="modifica" data-toggle="modal" data-target="#editModal">Modifica</button>
         <button id="btns" class="customer">Profilo</button>
         <button id="btns" data-id="{{id}}" class="remove">Elimina</button>
-        </li>
+        </a></li></ul>
         </template>
-      
-   
        </div>
+
       <!--jQuery, Popper, Bootstrap-->
       
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
