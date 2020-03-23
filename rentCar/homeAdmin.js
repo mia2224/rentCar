@@ -29,6 +29,8 @@ var $nome = $('#nome');
 var $cognome = $('#cognome');
 var $dataNascita = $('#dataNascita');
 
+
+
 var utenteTemplate = $('#utente-template').html();
 
 function addUtente(utente) {
@@ -74,31 +76,37 @@ function addUtente(utente) {
   $('.modifica').on('click', function(){    
      $('#myModal').modal('show');
      var $li=$(this).closest('li');
-     var $id=$(this).attr('id');
-  });
-
-  $('#add-utente').on('click', function(e){
-      e.preventDefault();
-      var id=$('#id').val(data.id),
-
-      var utente={
-       nome=$('#nome').val(),
-       cognome=$('#cognome').val(),
-       annoNascita=$('#annoNascita').val(),
-       };
-       console.log(utente)
+     var utente={
+      id: $li.find('input.id').val($li.find('span.id').html()),
+      nome: $li.find('input.nome').val($li.find('span.nome').html()),
+      cognome: $li.find('input.cognome').val($li.find('span.cognome').html()),
+      dataNascita: $li.find('input.dataNascita').val($li.find('span.dataNascita').html()),
+     }
     
+     
+
+  $('#mod-utente').on('click', function(){
+      var utenteMod={
+      id: $li.find('input.id').val($li.find('span.id').html()),
+      nome: $li.find('input.nome').val($li.find('span.nome').html()),
+      cognome:$li.find('input.cognome').val($li.find('span.cognome').html()),
+      dataNascita: $li.find('input.dataNascita').val($li.find('span.dataNascita').html()),
+      }
+      
+      
 
    $.ajax({
        type:'PUT',
        url:'http://localhost:3000/utente/'+id,
-       data:utente,
+       data:utenteMod,
        success: function(data){
           console.log('utente modificato')
        },
        error:function(error){
            console.log(error);
        }
+   
+      });
      });
     });
     
@@ -131,10 +139,16 @@ $('#myModal').on('shown.bs.modal', function () {
    
 
 
+//selectedLi=ul.parentElement.parentElement;
+//document.getElementById('nome').value=selectedLi.cells[0].innerHtml;
+//document.getElementById('cognome').value=selectedLi.cells[1].innerHtml;
+//document.getElementById('annoNascita').value=selectedLi.cells[2].innerHtml;
+//});
 
 
-
-
+//selectedLi.cells[0].innerHtml=formData.nome;
+//selectedLi.cells[1].innerHtml=formData.cognome;
+//selectedLi.cells[2].innerHtml=formData.dataNascita;
 
 
     /* edit utente */

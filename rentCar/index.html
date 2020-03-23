@@ -49,62 +49,38 @@
                   <span aria-hidden="true">&times;</span>
                </button>
               </div>
+              <form autocomplete="off">
               <div class="modal-body" id="lista">
+                <p class="dn">id <input class="id" type="number" id="id"></p>
                 <p>Nome <input class="nome" type="text" id="nome"></p>
                 <p>Cognome <input class="cognome" type="text" id="cognome"></p>
                 <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
              </div>
              <div class="modal-footer">
                <button type="button" class="btn btn-secondary" id="cancellaMod" data-dismiss="modal">Cancella</button>
+               <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="mod-utente">Modifica</button>
                <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="add-utente">Salva</button>
+
              </div>
+            </form>
            </div>
          </div>
         </div>
         <!--Fine Add Modal-->           
 
-        
-   <!-- Modal Edit Utente 
-   <div class="modal fade" id="editModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modifica utente</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-           </button>
-         </div>
-             <form id="editFormID">
-             <div class="form-group" id="lista">
-             <p>Nome <input class="edit nome" type="text" id="nome"></p>
-             <p>Cognome <input  class="edit cognome" type="text" id="cognome"></p>
-             <p>Data di nascita <input class="edit dataNascita" type="date" id="dataNascita"></p>
-             </div>
-          
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="cancellaMod" data-dismiss="modal">Cancella</button>
-            <button type="submit"  class="btn btn-secondary" data-dismiss="modal" id="mod-utente">Modifica</button>
-            <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="add-utente">Salva</button>
-           </div>
-         </form>
-         </div>
-       </div>
-      </div>
-
-    </div>
-   Fine Edit Modal-->           
+  
                       
         <br><br>
         <ul id="utente">
         <template id="utente-template" >
         <li ><a>
         <div class="content">
-
+        <span class="id dn">{{id}}</span> 
         <span class="nome">{{nome}}</span> 
         <span class="cognome">{{cognome}}</span>
         <span class="dataNascita dn">{{dataNascita}}</span> 
         </div>
-        <button type="submit" id="btns" class="modifica" data-toggle="modal" data-target="#myModal">Modifica</button>
+        <button type="submit" data-id="{{id}}" id="btns" class="modifica" data-toggle="modal" data-target="#myModal">Modifica</button>
         <button id="btns" class="customer">Profilo</button>
         <button id="btns" data-id="{{id}}" class="remove">Elimina</button>
         </a></li></ul>
