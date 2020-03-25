@@ -1,5 +1,25 @@
+//login Admin
 
-    // cerca utenti
+    //username:admin
+    //password:1234
+
+function loginAdmin()
+{
+    var username=document.getElementById("username").value;
+    var password=document.getElementById("password").value;
+
+    if(username=="admin" && password=="1234")
+    {
+        alert('Benvenuto!');
+        window.location="index.html";
+        return false;
+    } else { 
+        alert('Username o password errati!');
+    }
+}
+
+// cerca utenti
+
      function cerca(){
       var input, filter, ul, li, a, i, txtValue;
       input=document.getElementById('cercaUtenti');
@@ -37,7 +57,7 @@ function addUtente(utente) {
     $utente.append(Mustache.render(utenteTemplate, utente));
 }
 
-    /* get utente */
+ // get utente 
 
     $.ajax({
     url: 'http://localhost:3000/utente',
@@ -49,7 +69,7 @@ function addUtente(utente) {
     });
 
 
-    /*post utente*/
+// post utente
 
     $('#add-utente').on('click', function(){
     var utente = {
@@ -71,61 +91,51 @@ function addUtente(utente) {
        });
     });
 
-    /*edit utente*/
 
-  $('.modifica').on('click', function(){    
-     $('#myModal').modal('show');
-     var $li=$(this).closest('li');
-     var utente={
-      id: $li.find('input.id').val($li.find('span.id').html()),
-      nome: $li.find('input.nome').val($li.find('span.nome').html()),
-      cognome: $li.find('input.cognome').val($li.find('span.cognome').html()),
-      dataNascita: $li.find('input.dataNascita').val($li.find('span.dataNascita').html()),
-     }
+//edit utente
+
+$('#editUt').on('shown.bs.modal', function (e) {
+    $utenteId=  $(e.relatedTarget).attr('data-id');
     
-     
+    var utente ={
+        nome:" ",
+        cognome:" ",
+        dataNascita:" ",
+    }
+ 
+    
 
-  $('#mod-utente').on('click', function(){
-      var utenteMod={
-      id: $li.find('input.id').val($li.find('span.id').html()),
-      nome: $li.find('input.nome').val($li.find('span.nome').html()),
-      cognome:$li.find('input.cognome').val($li.find('span.cognome').html()),
-      dataNascita: $li.find('input.dataNascita').val($li.find('span.dataNascita').html()),
+  $.ajax({
+      type:'PUT',
+      url:'http://localhost:3000/utente/'+$utenteId,
+      data:utenteId,
+      dataType:JSON,
+      success: function(data){
+          $('#nome').val(data.nome);
+          $('#cognome').val(data.cognome);
+          $('#dataNascita').val(data.dataNascita);
+          $('#utenteId').val(data.id);
+          $('#myModal').modal('show');
+      },
+      error:function(error){
+          console.log(error);
       }
-      
-      
-
-   $.ajax({
-       type:'PUT',
-       url:'http://localhost:3000/utente/'+id,
-       data:utenteMod,
-       success: function(data){
-          console.log('utente modificato')
-       },
-       error:function(error){
-           console.log(error);
-       }
-   
-      });
-     });
     });
-    
-  
+ }); 
 
-
-   /* delete utente */
+//delete utente
     
-    $utente.delegate('.remove', 'click', function(){
-       var $li=$(this).closest('li');
-        $.ajax({
-            type:'DELETE',
-            url:'http://localhost:3000/utente/' + $(this).attr('data-id'),
-            success: function (){
-                $li.remove();
-                alert('Utente eliminato');
-            }
-        });
+$utente.delegate('.remove', 'click', function(){
+   var $li=$(this).closest('li');
+    $.ajax({
+        type:'DELETE',
+        url:'http://localhost:3000/utente/' + $(this).attr('data-id'),
+        success: function (){
+            $li.remove();
+            alert('Utente eliminato');
+        }
     });
+});
 
 
  
@@ -137,99 +147,3 @@ $('#myModal').on('shown.bs.modal', function () {
 });
 
    
-
-
-//selectedLi=ul.parentElement.parentElement;
-//document.getElementById('nome').value=selectedLi.cells[0].innerHtml;
-//document.getElementById('cognome').value=selectedLi.cells[1].innerHtml;
-//document.getElementById('annoNascita').value=selectedLi.cells[2].innerHtml;
-//});
-
-
-//selectedLi.cells[0].innerHtml=formData.nome;
-//selectedLi.cells[1].innerHtml=formData.cognome;
-//selectedLi.cells[2].innerHtml=formData.dataNascita;
-
-
-    /* edit utente */
-
-    //var editSource= $("#editModal").html();
-    //var editModal= Handlebars.compile(editSource)
-    //
-    //$('.modifica').on('click', function(){
-    //    var listItem= $(event.target).closest("li.list-group-item");
-    //
-    //     listItem.find(".content").hide();
-    //
-    //    var content = listItem.find("span").html();
-    //
-    //    var edithtml = editModal({
-    //        id: content
-    //    });
-    //
-    //    listItem.append(edithtml);
-    //    
-    //    var $editForm = listItem.find('#editFormID');
-
-    //    $editForm.on('click', function(event){
-    //        e.preventDefault();
-    //   
-    
-    //    var newContent= $editForm.find('input').val();
-    //    listItem.find('span').html(newContent);
-    //
-    //    listItem.find('.content').show();
-     //
-     //   $editForm.remove();
-     //
-    //    var id= listItem.attr('id')
-    //    });
-
-    //    $.ajax({
-    //           method:'PUT',
-    //           url:'http://localhost:3000/utente/11',
-    //           data:{
-    //               text: newContent
-    //           }
-    //        });
-    //        });
-
-
-
-
-
-    //$('.modifica').on('click', function(){    
-   // $('#editModal').modal('show');
-    //var $li=$(this).closest('li');
-    //$li.find('input.nome').val($li.find('span.nome').html());
-   // $li.find('input.cognome').val($li.find('span.cognome').html());
-   // $li.find('input.dataNascita').val($li.find('span.dataNascita').html());
-   // $li.addClass('edit');
-   // });
-
-   // $('#cancellaMod').on('click', function(){  
-   //    $(this).closest('li').removeClass('edit');
-   // });
-
-
-   //  
-   // $('#mod-utente').on('click', function(){
-   //     var $li=$(this).closest('li');
-   //     var utente= {
-   //         nome:$li.find('input.nome').val(),
-   //         cognome:$li.find('input.cognome').val(),
-   //         dataNascita:$li.find('input.dataNascita').val(),
-  //      }
-  //  
-  //  $.ajax({
-  //     type:'PUT',
-  //     url:'http://localhost:3000/utente/11',
-  //     data: utente,
-  //     success: function(newUtente){
-  //         addUtente(newUtente);
- //      },
- //      error: function () {
-  //         alert('errore modifica utente');
-  //     }
-  //  });
-  // });

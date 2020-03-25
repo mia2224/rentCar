@@ -13,7 +13,7 @@
     <div class="header">
           <div class="inner-header">
             <div class="logo-container">
-              <h1>RENTAL<span>CAR</span></h1>
+            <h1>RENTAL<span>CAR</span></h1>
             </div>
             <ul class="navigation">
               <a href="index.html"><li>Homepage</li></a>
@@ -26,19 +26,19 @@
       <br><br>
       <!--Navbar End-->
       <!-- Button trigger modal -->
-      <div class="main">
+      
         
+        <form >
+          <input class="pull-right" type="text"  id="cercaUtenti" onkeyup="cerca()" placeholder="Cerca"/>
+          <ul  id="result"></ul>  
+        </form>
+        <br>
+        <div class="main"></div>
         <button id="btnAdd" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
           Aggiungi utenti
         </button>
 
-        <form>
-          <input type="text"  id="cercaUtenti" onkeyup="cerca()" placeholder=""/>
-          <input type="submit" id="cerca2"  name="" value="Cerca"/> 
-          <ul  id="result"></ul>  
-        </form>
-
-
+    
         <!-- Modal ADD Utente -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -49,17 +49,17 @@
                   <span aria-hidden="true">&times;</span>
                </button>
               </div>
-              <form autocomplete="off">
+             
               <div class="modal-body" id="lista">
-                <p class="dn">id <input class="id" type="number" id="id"></p>
-                <p>Nome <input class="nome" type="text" id="nome"></p>
-                <p>Cognome <input class="cognome" type="text" id="cognome"></p>
-                <p>Data di nascita <input class="dataNascita" type="date" id="dataNascita"></p>
+                <p class="dn">id <input class="edit id" type="hidden" id="utenteId" ></p>
+                <p>Nome <input class="edit nome" type="text" id="nome"></p>
+                <p>Cognome <input class="edit cognome" type="text" id="cognome"></p>
+                <p>Data di nascita <input class="edit dataNascita" type="date" id="dataNascita"></p>
              </div>
              <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" id="cancellaMod" data-dismiss="modal">Cancella</button>
-               <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="mod-utente">Modifica</button>
-               <button type="button"  class="btn btn-secondary" data-dismiss="modal" id="add-utente">Salva</button>
+               <button type="button" class="btn btn-secondary remove" id="cancellaMod" data-dismiss="modal">Cancella</button>
+               <button type="button" class="btn btn-secondary saveEdit" data-dismiss="modal"  id="mod-utente">Modifica</button>
+               <button type="button" class="btn btn-secondary " data-dismiss="modal" id="add-utente">Salva</button>
 
              </div>
             </form>
@@ -73,18 +73,21 @@
         <br><br>
         <ul id="utente">
         <template id="utente-template" >
-        <li ><a>
+        <li><a>
         <div class="content">
-        <span class="id dn">{{id}}</span> 
-        <span class="nome">{{nome}}</span> 
-        <span class="cognome">{{cognome}}</span>
-        <span class="dataNascita dn">{{dataNascita}}</span> 
+        <p  class="id dn">{{id}}</p> 
+        {{nome}}
+        {{cognome}}
+        <p id="dataNascita" class="dataNascita dn">{{dataNascita}}</p> 
+        <br>  
         </div>
-        <button type="submit" data-id="{{id}}" id="btns" class="modifica" data-toggle="modal" data-target="#myModal">Modifica</button>
-        <button id="btns" class="customer">Profilo</button>
-        <button id="btns" data-id="{{id}}" class="remove">Elimina</button>
-        </a></li></ul>
+      
+        <button type="submit"  class="editUt btns" data-toggle="modal" data-target="#myModal">Modifica</button>
+        <button  class="customer btns">Profilo</button>
+        <button  data-id="{{id}}" class="remove btns">Elimina</button>
+        </a></li>
         </template>
+       </ul>
        </div>
 
       <!--jQuery, Popper, Bootstrap-->

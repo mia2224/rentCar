@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Parco Auto</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="main.css">
       <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -75,9 +75,9 @@
       <p>Targa: {{targa}}</p>
       <p>Categoria: {{categoria}}</p>
       
-      <button id="btns" class="prenota">Prenota</button>
-      <button id="btns" class="updateAuto"  data-toggle="modal" data-target="#modalAuto">Modifica</button>
-      <button id="btns" data-id="{{id}}" class="removeAuto">Elimina</button>
+      <button class="prenota btns">Prenota</button>
+      <button class="updateAuto btns"  data-toggle="modal" data-target="#modalAuto">Modifica</button>
+      <button data-id="{{id}}" class="removeAuto btns">Elimina</button>
       </a></li>
      </template>
      </div>

@@ -1,7 +1,4 @@
 .logBg {
-    background:url('img/rentcar.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
     margin:0;
     padding:0;
     font-family:sans-serif;
@@ -21,7 +18,7 @@
     border-radius: 10px;
 }
 
-#email, #password {
+#username, #password {
     width:200px;
     border:none;
     background:transparent;
@@ -31,7 +28,7 @@
     color:white;
 }
 
-#button{
+#button1{
     border-radius:20px;
     padding:10px 20px;
     background:rgb(15, 17, 19);
@@ -44,7 +41,7 @@
     font-size: 15px;
 }
 
-#button:hover{
+#button1:hover{
     background-color:#55d6aa;
     color:black;
 }
@@ -115,9 +112,11 @@
     color:#55d6aa;
 }
 /* div */
-.main{
-    width:80%;
-    margin: 0 auto;
+div.content{
+    font-size: 1.3em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
 }
 
 li{
@@ -146,6 +145,7 @@ h3, h5{
 
 
 .btn-primary{
+    margin-left: 3rem;
     width: 280px;
     outline-style: none;
     font-family:'Montserrat';
@@ -172,15 +172,15 @@ h3, h5{
     box-shadow: unset;
 }
 
-#btns{
+.btns{
     border-color: #101010;
     border-radius: 5px;
     border: 1px solid;
     color: #101010;
-    font-size: 12px;
+    font-size: 15px;
 }
 
-#btns:hover{
+.btns:hover{
     background: #55d6aa;
 }
 
@@ -191,43 +191,23 @@ input:focus{
 ul li.modifica .edit{
     display:initial;
 }
+
 /* search box */
-form {
-    display: inline-block;
-}
+
 
 #cercaUtenti, #cercaVeicoli{
-    position: relative;
-    bottom: -3px;
-    display: inline-block;
-    font-size: 16px;
-    background: #fff;
-    width: 200px;
-    height: 40px;
-    outline:none;
-    padding: 0 20px;
-    border-radius: 5px 0 0 5px;
-    border: solid 1px #101010;
+    
 }
-
-#cerca2{
-  position:relative;
-  bottom: -1px;
-  left:-7px;
-  border-radius: 0 5px 5px 0;
-  width: 70px;
-  height: 40px;
-  outline: none;
-  background-color: #55d6aa;
-  border: solid 1px #101010;
-  font-family:'Montserrat';
-  font-weight: bolder;
-}
-
-  #cerca2:hover{
-      background-color:#35866b;
-  }
-
+.pull-right {
+    width:350px;
+    margin-right: 11rem;
+    margin-top: -30px;
+    border-radius: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: solid, 2px, #212529;
+    float:right;
+    }
 
 #dataNascita, #cognome, #nome{
     border-radius: 5px;
