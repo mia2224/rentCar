@@ -14,7 +14,7 @@
 
 .card{
     padding: 60px 40px 50px 40px;
-    background: rgba(50,50,50,0.8);
+    background: rgba(75, 75, 75, 0.8);
     border-radius: 10px;
 }
 
@@ -111,11 +111,15 @@
 .navigation a:hover li {
     color:#55d6aa;
 }
-/* div */
+
+
+
 div.content{
     font-size: 1.3em;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+    margin-left:10%;
+
 
 }
 
@@ -129,6 +133,8 @@ h3, h5{
     font-family:'Montserrat';
     font-weight: bold;
     text-align: center;
+  
+
 }
 
 #lista{
@@ -145,7 +151,7 @@ h3, h5{
 
 
 .btn-primary{
-    margin-left: 3rem;
+    margin-left: 13.5%;
     width: 280px;
     outline-style: none;
     font-family:'Montserrat';
@@ -172,6 +178,10 @@ h3, h5{
     box-shadow: unset;
 }
 
+.btnMain{
+    margin-left:65%;
+    margin-top: -2%;
+}
 .btns{
     border-color: #101010;
     border-radius: 5px;
@@ -179,6 +189,11 @@ h3, h5{
     color: #101010;
     font-size: 15px;
 }
+
+.btnsPa{
+    display: inline-flex;
+}
+
 
 .btns:hover{
     background: #55d6aa;
@@ -188,26 +203,6 @@ input:focus{
     outline:none;
 }
 
-ul li.modifica .edit{
-    display:initial;
-}
-
-/* search box */
-
-
-#cercaUtenti, #cercaVeicoli{
-    
-}
-.pull-right {
-    width:350px;
-    margin-right: 11rem;
-    margin-top: -30px;
-    border-radius: 0;
-    outline: 0;
-    background-color: transparent;
-    border-bottom: solid, 2px, #212529;
-    float:right;
-    }
 
 #dataNascita, #cognome, #nome{
     border-radius: 5px;
@@ -216,5 +211,37 @@ ul li.modifica .edit{
 }
 
 
-/*parco Auto */
+/* search box */
+
+#cercaUtenti{
+    width:250px;
+    margin-right:20%;
+    margin-top: 2%;
+    border-radius: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: solid, 2px, #212529;
+    float:right;
+    height: 2em;
+    }
+
+#cercaVeicoli{
+     float:right;
+     margin-right:20%;
+     margin-top:-2.5%;
+     width:250px;
+}
+
+
+#filter{
+    float:right;
+    height: 2em;
+    margin-top: 2%;
+
+}
+
+
+.mainPa{
+    margin-left: 9%;
+}
 
