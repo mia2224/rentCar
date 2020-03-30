@@ -245,3 +245,8 @@ input:focus{
     margin-left: 9%;
 }
 
+h4{
+    text-align:center;
+    text-transform: uppercase;
+    font-family:'Montserrat', sans-serif;
+}

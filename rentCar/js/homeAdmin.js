@@ -123,7 +123,14 @@ $(document).ready(function () {
 
     //edit utente
 
- 
+    //Fill form
+/*     fillForm(data){
+        this.idInput.value=data.id;
+        this.nomeInput.value=data.nome;
+        this.cognomeInput.value=data.cognome;
+        this.dataNascitaInput.value=data.dataNascita;
+    } */
+
     $('#myModal').on('click', '.editUtente', function () {
         var utente = $(this).closest('li').data('utente');
         $('#utenteId').val(utente.utenteId);
